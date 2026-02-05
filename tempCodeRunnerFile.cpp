@@ -1,22 +1,9 @@
-//WAP to create a linked list
-class Node{
-    public:
-        int data;
-        Node *next;
-        Node(int data){
-            this->data = data;
-            this->next = NULL;
-        }
-};
-int main(){
-    Node *head = new Node(20);
-    Node *second = new Node(30);
-    head->next = second;
-    Node *third = new Node(40);
-    second->next = third;
+#include<iostream>
+using namespace std;
 
-    while(head != NULL){
-        cout<<head->data<<" ";
-        head = head->next;
-    }
+int main(){
+    int a=10;
+    int *p = &a;
+    cout<<a<<" "<<*p;
+
 }
