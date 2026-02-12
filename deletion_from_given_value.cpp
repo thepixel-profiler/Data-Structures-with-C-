@@ -1,4 +1,4 @@
-//WAP to delete an element from a given position
+//WAP to delete a given data/value from the linked list.
 #include<iostream>
 using namespace std;
 
@@ -29,32 +29,23 @@ void insert_at_tail(Node* &head, int data){
     }
     temp->next = new_node;
 }
-void delete_from_pos(Node* &head, int pos){
-    if(head == NULL){
-        cout<<"List is empty";
-        return;
-    }
-    if(pos == 0){
-        Node *temp = head;
-        head = head->next;
-        delete temp;
-        cout<<"Node deleted from position "<<pos<<endl;
-        return;
-    }
+void delete_given_val(Node* &head, int val){
     Node *temp = head;
-    for(int i=0; temp!=NULL && i<pos-1; i++){
+    Node *temp1 = NULL;
+    while(temp != NULL){
+        if(temp->data == val){
+            if(temp1 == NULL){
+                head = head->next;
+            } else {
+                temp1->next = temp->next;
+            }
+            delete temp;
+            return;
+        }
+        temp1 = temp;
         temp = temp->next;
-    }
-    if(temp == NULL || temp->next == NULL){
-        cout<<"Position out of bounds!"<<endl;
-        return;
-    }
-    Node *node_to_delete = temp->next;
-    temp->next = temp->next->next;
-    delete node_to_delete;
-    cout<<"Node deleted from position "<<pos<<endl;
-    
-}
+        }
+} 
 int main(){
     Node *head = new Node(20);
     insert_at_tail(head, 30);
@@ -62,7 +53,7 @@ int main(){
     cout<<"Linked list before deletion: ";
     print_linked_list(head);
     cout<<endl;
-    delete_from_pos(head, 2);
-    cout<<"Linked List after deletion: ";
+    delete_given_val(head, 20);
+    cout<<"Linked List after deletion of the given value: ";
     print_linked_list(head);
 }
