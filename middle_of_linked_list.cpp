@@ -30,7 +30,7 @@ void print_linked_list(Node *head){
         temp = temp->next;
     }
 }
-void sort_linked_list(){}
+
 int main(){
     Node *head = new Node(20);
     insert_at_tail(head, 30);
